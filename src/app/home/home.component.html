@@ -1,2 +1,58 @@
-<h3>Home Component</h3>
-<p>Welcome to Angular Seed</p>
+<h3>Angular 2 Forms</h3> 
+<div class="container">
+
+<form>
+    <div class="row">
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+            <input type="text"
+            name="startDate"
+            class="form-control"
+            [minDate]="minDate"
+            [maxDate]="maxDate"            
+            #dp="bsDatepicker"
+            bsDatepicker [(ngModel)]="startDate">
+        </div>
+        <div class="col-xs-12 col-12 col-md-3 form-group">
+            <button class="btn btn-success" (click)="dp.toggle()">Date Picker</button>
+        </div>
+    </div>
+
+    <timepicker [(ngModel)]="mytime" name="mytime" [minuteStep]="15"></timepicker>
+    <pre class="alert alert-info">Time is: {{mytime}}</pre>
+
+    <!--<div class="row">
+        <div class="col-xs-6">
+            Minutes step is:
+            <select class="form-control" [(ngModel)]="mstep" name="mstep">
+              <option *ngFor="let opt of options.mstep" [value]="opt">{{opt}}</option>
+            </select>
+          </div>
+    </div>!-->
+
+    <pre class="card card-block card-header">{{singleModel}}</pre>
+    <button type="button" class="btn" name="singleModel"
+            [class.btn-primary]="singleModel === '1'"
+            [(ngModel)]="singleModel" btnCheckbox
+            btnCheckboxTrue="1" btnCheckboxFalse="0">
+      {{ singleModel }}
+    </button>
+
+    <pre class="card card-block card-header">{{ radioModel || 'null' }}</pre>
+    <div class="btn-group">
+      <label class="btn btn-primary" name="radioModel" [(ngModel)]="radioModel" btnRadio="Left">Left</label>
+      <label class="btn btn-primary" name="radioModel" [(ngModel)]="radioModel" btnRadio="Middle">Middle</label>
+      <label class="btn btn-primary" name="radioModel" [(ngModel)]="radioModel" btnRadio="Right">Right</label>
+    </div>
+
+    <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly" name="rate" [customTemplate]="t" style="color: #0275d8;font-size: 20px;"></rating>
+    <ng-template #t let-index="index" let-value="value">{{index < value ? '&#9745;' : '&#9744;'}}</ng-template>
+    <div class="card">
+        <pre class="card-block card-header" style="margin:15px 0;">Rate: <b>{{rate}}</b> </pre>
+    </div>
+
+
+</form>
+
+<h3>{{ startDate }}</h3>
+
+</div>
